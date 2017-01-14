@@ -1,7 +1,6 @@
-
 import parse
 
-def advParse(pattern, string,depth=0):
+def optParse(pattern, string,depth=0):
 	print("    "*depth + "Pattern: "+pattern)
 	print("    "*depth + "String:  "+string)
 	#check for optional arguments (in brackets)
@@ -22,7 +21,7 @@ def advParse(pattern, string,depth=0):
 		postStr=res["post"]
 	if("in" in res.named):
 		inStr=res["in"]
-		return advParse(preStr+inStr+postStr,string,depth+1) or advParse(preStr+postStr,string,depth+1)
+		return optParse(preStr+inStr+postStr,string,depth+1) or optParse(preStr+postStr,string,depth+1)
 	else:
 		print("    "*depth + "Return:  "+str(parse.parse(preStr,string)))
 		return parse.parse(preStr,string)
